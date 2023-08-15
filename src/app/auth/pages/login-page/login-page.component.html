@@ -1,0 +1,37 @@
+
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title class="text-lg mb-4">Acceso</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="flex flex-column">
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input type="text" matInput placeholder="Nombre de usuario">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-button mat-flat-button color="primary">
+        <mat-icon>save</mat-icon>
+        Iniciar sesión
+      </button>
+
+      <div class="flex justify-content-end mt-5">
+        <a routerLink="/auth/new-account">¿Todavía no estás registrado?</a>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
