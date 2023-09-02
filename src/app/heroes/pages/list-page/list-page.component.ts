@@ -12,6 +12,7 @@ export class ListPageComponent implements OnInit {
 
   public heroes: Hero[] = [];
 
+
   constructor(private heroesService: HeroesService ){}
 
   ngOnInit(): void {
