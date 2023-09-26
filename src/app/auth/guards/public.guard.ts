@@ -15,23 +15,24 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
 
     tap( isAuthenticated => console.log({ 'Authenticated': isAuthenticated }) ),
     tap( ( isAuthenticated ) => {
-      if ( !isAuthenticated ) {
-        router.navigate(['/auth/login'])
+      if ( isAuthenticated ) {
+        router.navigate(['./'])
       }
     }),
+    map( isAuthenticated => !isAuthenticated )
 
   )
 }
 
 
 
-export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
+export const canMatchGuardPublic: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
 
   return checkAuthStatus();
 };
 
 
-export const canActivateGuard: CanActivateFn = ( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) => {
+export const canActivateGuardPublic: CanActivateFn = ( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) => {
 
 
   return checkAuthStatus();
